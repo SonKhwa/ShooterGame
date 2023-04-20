@@ -7,9 +7,9 @@ FString UMapConverting::ConvertMapToString(TMap<FString, float> Map)
 {
     FString MapAsString;
     for (const auto& [key, value] : Map) {
-        MapAsString += key + "=" + FString::SanitizeFloat(Map[key]) + ", ";
+        MapAsString += key + "=" + FString::SanitizeFloat(Map[key]) + "\n";
     }
-    MapAsString.RemoveAt(MapAsString.Len() - 3, 2);
+    //MapAsString.RemoveAt(MapAsString.Len() - 3, 2);
     return MapAsString;
 }
 
@@ -17,7 +17,7 @@ TMap<FString, float> UMapConverting::ConvertStringToMap(FString MapAsString)
 {
     TMap<FString, float> StringAsMap;
     TArray<FString> StringAsArray;
-    MapAsString.ParseIntoArray(StringAsArray, TEXT(","), true);
+    MapAsString.ParseIntoArray(StringAsArray, TEXT("\n"), true);
 
     for (FString Str : StringAsArray)
     {
